@@ -1,0 +1,8 @@
+{
+  "name": "bun-fullstack-monorepo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ]
+}
