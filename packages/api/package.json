@@ -1,0 +1,14 @@
+{
+  "name": "bun-fs-api-app",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "bun --watch src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^3.12.6",
+    "shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.3"
+  }
+}
