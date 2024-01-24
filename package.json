@@ -2,7 +2,15 @@
   "name": "bun-fullstack-monorepo",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "concurrently \"bun run --cwd packages/web dev\" \"bun run --cwd packages/api dev\"",
+    "dev:web": "bun run --cwd packages/web dev",
+    "dev:api": "bun run --cwd packages/api dev"
+  },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
