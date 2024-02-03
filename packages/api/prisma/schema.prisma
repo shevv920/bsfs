@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name      String
+  email     String  @unique
+  isDeleted Boolean @default(false)
+
+  posts Post[]
+  auth  Auth?
+
+  @@index([isDeleted])
+  @@map("users")
+}
+
+model Auth {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId   String @unique @db.Uuid
+  password String
+  user     User   @relation(fields: [userId], references: [id])
+
+  @@map("auth")
+}
+
+model Post {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title    String
+  body     String
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+
+  @@map("posts")
+}
