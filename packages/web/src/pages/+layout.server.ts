@@ -1,8 +1,7 @@
 import type { ServerLoadEvent } from '@sveltejs/kit';
 
-
 export const load = async ({ cookies }: ServerLoadEvent) => {
-  if (!cookies.get('authToken')) {
+  if (!cookies.get('token')) {
     return { user: null };
   }
 

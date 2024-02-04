@@ -7,6 +7,9 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
+		files: {
+			routes: 'src/pages',
+		},
 		alias: {
 			'~/*': './src/',
 		},

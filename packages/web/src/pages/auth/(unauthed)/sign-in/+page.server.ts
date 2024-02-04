@@ -9,8 +9,11 @@ export const actions: Actions = {
     });
 
     const json = await result.json();
-    if (json.success) {
-      cookies.set('authToken', json.authToken, { domain: 'localhost', path: '/', secure: false, httpOnly: false });
+
+    if (json.token) {
+
+      cookies.set('token', json.token, { domain: 'localhost', path: '/', secure: false, httpOnly: false });
+
       return redirect(303, body.get('redirectTo')?.toString() || '/app');
     }
   }
