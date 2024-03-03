@@ -14,7 +14,7 @@ model User {
   id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name      String
   email     String  @unique
-  isDeleted Boolean @default(false)
+  isDeleted Boolean @default(false) @map("is_deleted")
 
   posts Post[]
   auth  Auth?
@@ -25,7 +25,7 @@ model User {
 
 model Auth {
   id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  userId   String @unique @db.Uuid
+  userId   String @unique @map("user_id") @db.Uuid
   password String
   user     User   @relation(fields: [userId], references: [id])
 
@@ -37,7 +37,7 @@ model Post {
   title    String
   body     String
   author   User   @relation(fields: [authorId], references: [id])
-  authorId String
+  authorId String @map("author_id") @db.Uuid
 
   @@map("posts")
 }

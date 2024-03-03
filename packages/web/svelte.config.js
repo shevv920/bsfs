@@ -8,10 +8,10 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		files: {
-			routes: 'src/pages',
+			routes: 'src/routes',
 		},
 		alias: {
-			'~/*': './src/',
+			'~/*': './src/lib/*',
 		},
 	}
 };
